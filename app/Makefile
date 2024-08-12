@@ -1,7 +1,7 @@
 # Variables
-IMAGE_NAME := api_img
-CONTAINER_NAME := api
-API_PORT := 8000
+IMAGE_NAME := webpage_img
+CONTAINER_NAME := webpage
+API_PORT := 8501
 
 # Build the Docker image
 build:
@@ -15,18 +15,26 @@ build:
 	fi
 
 # Run the Docker container
-run:
+run: env
 	@if docker ps -a --format '{{.Names}}' | grep -q $(CONTAINER_NAME); then \
 		echo "Container $(CONTAINER_NAME) is already running"; \
 		make clean; \
 	fi
 	@if docker images -q $(IMAGE_NAME) | grep -q .; then \
 		echo "Running Container $(CONTAINER_NAME)...";\
-		docker run -d -p $(API_PORT):$(API_PORT) --name $(CONTAINER_NAME) $(IMAGE_NAME) python run.py; \
+		docker run -d -p $(API_PORT):$(API_PORT) --name $(CONTAINER_NAME) $(IMAGE_NAME); \
 	else \
 		echo "Image $(IMAGE_NAME) does not exist"; \
 		make build; \
 		make run; \
+	fi
+
+env:
+	@if [ ! -f .env ]; then \
+		echo "Creating .env file..."; \
+		cp template.env .env; \
+	else \
+		echo ".env file already exists"; \
 	fi
 
 # Stop and remove the Docker container
