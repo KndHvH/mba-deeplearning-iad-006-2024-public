@@ -1,5 +1,30 @@
 # Exercício para sala de aula - Árvores de decisão e Ensembles
 
+## Uso (no codespace)
+
+subir docker compose:
+```
+make up
+```
+
+derrubar docker compose:
+```
+make down
+```
+
+Acesso:
+```
+http://127.0.0.1:8501/
+ou 
+http://localhost:8501/
+```
+
+\* Precisa fazer o foward da porta 8501 quando estiver utilizando o codespace.
+
+### Previsão
+
+![](imagens/image.png)
+
 ## Introdução e objetivos
 Este notebook é um material complementar à disciplina de Aprendizado de Máquinas 2. O objetivo é reforçar os conteúdos das últimas aulas e trazer alguns aspectos práticos da implementação destes modelos. Vamos exercitar algumas etapas do MLOps, incluindo a dockerização da solução, inferência e cliente, além de cobrir as etapas de treinamento, avaliação e deploy.
 

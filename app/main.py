@@ -13,16 +13,20 @@ canvas_result = st_canvas(
     stroke_width=10,
     stroke_color="#FFFFFF",
     background_color="#000000",
-    height=300,
-    width=300,
+    height=100,
+    width=100,
     drawing_mode="freedraw",
     key="canvas",
 )
 
 if canvas_result.image_data is not None:
     predict = None
+    image = None
     if st.button("Enviar para Previsão"):
-        predict = api_service.predict(canvas_result)
+        image = api_service.crop_image(canvas_result)
+        predict = api_service.predict(image)
+
+    if image: st.image(image, width=100)
     
     
     if predict is not None:
