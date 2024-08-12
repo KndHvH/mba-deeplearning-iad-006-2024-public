@@ -1,5 +1,8 @@
 # Exercício para sala de aula - Árvores de decisão e Ensembles
 
+[github repo](https://github.com/KndHvH/mba-deeplearning-iad-006-2024-public)
+
+
 ## Uso (no codespace)
 
 subir docker compose:
